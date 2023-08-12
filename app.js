@@ -1,10 +1,11 @@
 //Imports
-import 'dotenv/config.js'                       //Importo UNICAMENTE la configuración de las variables de entorno
+import 'dotenv/config.js';                       //Importo UNICAMENTE la configuración de las variables de entorno
+import __dirname from './utils.js';                 //Importo la configuracion de la ubicación del servidor (antes con commonjs), venia preconfigurada
 import createError from 'http-errors';          //Crea errores
-import  express  from 'express';               //Provee metodos y propiedades para levantar servidores
+import express  from 'express';               //Provee metodos y propiedades para levantar servidores
 import path from 'path';                      //Para conocer la ubicación de nuestro servidor
 import logger from 'morgan';                  //Para registrar cada una de las peticiones
-import indexRouter from '/routes/index.js'     //Solo vamos a configurar las rutas del entrutador de back princpial
+import indexRouter from './routes/index.js'     //Solo vamos a configurar las rutas del entrutador de back princpial
                                                //Este enrutador va a llamar a TODOS los otros recursos(cities, itinerary,etc).
 
 let app = express();                           //Ejecutando el modulo de express: Creo una app de backend (servidor)

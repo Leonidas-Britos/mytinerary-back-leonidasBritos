@@ -1,6 +1,6 @@
 //IMPORTS
 
-import app from '../app';     //Configuracion del servidor
+import app from '../app.js';     //Configuracion del servidor
 import debug from 'debug';    //Modulo de debugueo
 import http from 'http';      //Modulo para crear servidores HTTP
 
@@ -14,8 +14,8 @@ app.set('port', port);
 
 //START SERVING
 let server = http.createServer(app); //Creo un servidor normalizado con HTTP
-let ready = ()=> console.log('Server ready on porty'+port);
-server.listen(port);                 //Con el método listen, ESCUCHO el puerto para que empiece a funcionar (a levantarse)
+let ready = ()=> console.log('Server ready on porty '+ port);
+server.listen(port,ready);                 //Con el método listen, ESCUCHO el puerto para que empiece a funcionar (a levantarse)
 
 server.on('error', onError);
 server.on('listening', onListening);
