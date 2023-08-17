@@ -141,7 +141,7 @@ async function createItineraries(arrayItineraries) {
             itinerary.city_id = city_id;
             await Itinerary.create(itinerary);
         }
-        console.log('sucesfull itinerary');
+        console.log('sucesful itinerary');
     } catch (error) {
         console.log(error);
     }
