@@ -218,4 +218,5 @@ const actitivies = [{
     name: "Flying over the Falls",
     photo: "https://ychef.files.bbci.co.uk/976x549/p014n0rg.jpg",
     itinerary_id: "Adventure Time"
-}]
+}];
+
