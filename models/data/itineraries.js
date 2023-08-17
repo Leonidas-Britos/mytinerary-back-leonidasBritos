@@ -1,6 +1,7 @@
 import 'dotenv/config.js';
 import { connect } from 'mongoose';
-import User from '../Itinerary.js';
+import City from '../City.js';
+import Itinerary from '../Itinerary.js';
 
 const itineraries = [{
     name: 'Angkor Wats Temple Complex',
@@ -128,4 +129,23 @@ const itineraries = [{
     duration: 160,
     tags: ['#culture', '#peace'],
     photo: 'https://i.im.ge/2022/08/31/OERMl1.salahCitadelCairoCity.png'
-}]
+}];
+
+
+async function createItineraries(arrayItineraries) {
+    try {
+        await connect(process.env.LINK_DB);
+        for (let itinerary of arrayItineraries) {
+            let city = await City.findOne({ city:itinerary.city_id});
+            let city_id = await city._id;
+            itinerary.city_id = city_id;
+            await Itinerary.create(itinerary);
+        }
+        console.log('sucesful itinerary');
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+createItineraries(itineraries);
