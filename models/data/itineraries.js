@@ -128,4 +128,7 @@ const itineraries = [{
     duration: 160,
     tags: ['#culture', '#peace'],
     photo: 'https://i.im.ge/2022/08/31/OERMl1.salahCitadelCairoCity.png'
-}]
+}];
+
+
+
