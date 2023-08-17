@@ -25,7 +25,7 @@ const users = [{
     country: "Argentina"
 }]
 
-connect('mongodb+srv://leonidas:123@cluster0.rvugcio.mongodb.net/myTinerary-db') 
+connect(process.env.LINK_DB) 
 .then(()=>{
     User.insertMany(users);
     console.log('done!');
