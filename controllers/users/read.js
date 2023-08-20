@@ -7,14 +7,14 @@ export default async (req, res) => {
         let allUsers = await User.find()
         //find BUSCA todos (en este caso usuarios)
         return res.status(200).json({
-            suces: true,
-            message: "users found",
+            success: true,
+            message: "Users Found",
             response: allUsers
         })
     } catch (error) {
         return res.status(400).json({
-            sucees: false,
-            message: 'not found',
+            success: false,
+            message: 'Not Found',
             response: null
         })
     }
