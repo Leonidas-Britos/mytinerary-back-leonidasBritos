@@ -1,6 +1,6 @@
 import City from "../../models/City.js";
 
-export default async (req, res, next ) => {
+export default async (req,res,next ) => {
     try {
         let oneCity = await City.findOne({ _id:req.params.city_id }).select("country city -_id");
 

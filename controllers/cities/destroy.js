@@ -1,18 +1,22 @@
 import City from "../../models/City.js";
 
-export default async (req,res) => {
+export default async (req,res,next) => {
     try {
         let deletedCity = await City.findByIdAndDelete(req.params.id)
-        return res.status(200).json({
-            success: true,
-            message: 'City Deleted',
-            response: deletedCity._id
-        })
+        if (deletedCity) {
+            return res.status(200).json({
+                success: true,
+                message: 'City Deleted',
+                response: deletedCity._id
+            })
+        } else {
+            return res.status(404).json({
+                success: false,
+                message: 'Not Found',
+                response: null
+            })
+        }
     } catch (error) {
-        return res.status(400).json({
-            success: false,
-            message: 'Not Deleted',
-            response: null
-        })
+        next(error);
     }
 }
