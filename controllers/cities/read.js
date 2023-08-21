@@ -1,18 +1,22 @@
 import City from "../../models/City.js";
 
-export default async (req, res) => {
+export default async (req, res, next) => {
     try {
         let allCities = await City.find()
-        return res.status(200).json({ 
-            sucess: true,
-            message: "Cities Found",
-            response: allCities
-        })
+        if (allCities.length>0) {
+            return res.status(200).json({
+                success: true,
+                message: 'cities found',
+                response: allCities
+            })
+        } else {
+            return res.status(404).json({
+                success: false,
+                message: 'not found',
+                response: null
+            })
+        }
     } catch (error) {
-        return res.status(400).json({
-            success: false,
-            message: 'Not Found',
-            response: null
-        })
+        next(error)
+        }
     }
-}

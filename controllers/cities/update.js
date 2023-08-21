@@ -1,21 +1,24 @@
 import City from "../../models/City.js";
 
-export default async (req, res) => {
+export default async (req, res, next) => {
   try {
-    let updateCity = await City.findByIdAndUpdate(
-        req.params.c_id,
-        req.body, 
-        { new: true})
-    return res.status(200).json({
-      success: true,
-      message: 'City Updated',
-      response: updateCity
-    });
+    let updateCity = await City.findByIdAndUpdate(req.params.c_id, req.body, {
+      new: true,
+    }).select("name photo mail");
+    if (updateCity) {
+      return res.status(200).json({
+        success: true,
+        message: "City Updated",
+        response: updateCity,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: "Not Found",
+        response: null,
+      })
+    }
   } catch (error) {
-    return res.status(400).json({
-      success: false,
-      message: 'Not updated',
-      response: null
-    });
+    next(error)
   }
 };
