@@ -6,13 +6,13 @@ export default async (req,res,next) => {
         if (deletedCity) {
             return res.status(200).json({
                 success: true,
-                message: 'City Deleted',
+                message: 'City deleted',
                 response: deletedCity._id
             })
         } else {
             return res.status(404).json({
                 success: false,
-                message: 'Not Found',
+                message: 'Notfound',
                 response: null
             })
         }

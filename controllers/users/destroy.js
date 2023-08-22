@@ -5,13 +5,13 @@ export default async (req,res)=> {
         let deletedUser = await User.findByIdAndDelete(req.params.id)
         return res.status(200).json({
             success: true,
-            message: 'User Deleted',
+            message: 'User deleted',
             response: deletedUser._id
         })
     } catch (error) {
         return res.status(400).json({
             success: false,
-            message: 'Not Deleted',
+            message: 'Not deleted',
             response: null
         })
     }

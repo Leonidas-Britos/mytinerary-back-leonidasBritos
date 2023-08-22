@@ -7,17 +7,17 @@ export default async (req,res,next) => {
         if (oneUser) {
             return res.status(200).json({
                 success: true,
-                message: 'user found',
+                message: 'User found',
                 response: oneUser
             })
         } else {
             return res.status(404).json({
                 success: false,
-                message: 'not found user',
+                message: 'Not found user',
                 response: null
             })
         }
     } catch (error) {
-        next(error)
+        next(error);
     }
 }
