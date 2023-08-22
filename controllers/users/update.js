@@ -1,6 +1,6 @@
 import User from "../../models/User.js";
 
-export default async (req,res) => {
+export default async (req, res) => {
   try {
     let updatedUser = await User.findByIdAndUpdate(
       req.params.u_id,
