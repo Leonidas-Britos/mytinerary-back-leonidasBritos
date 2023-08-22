@@ -10,7 +10,7 @@ export default async (req, res) => {
       let newUser = await User.create(req.body)
       return res.status(201).json({
         succes: true,
-        message: "User Created",
+        message: "User created",
         response: newUser._id
       })
     } catch (error) {
