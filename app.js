@@ -9,6 +9,7 @@ import indexRouter from './routes/index.js'     //Solo vamos a configurar las ru
                                                //Este enrutador va a llamar a TODOS los otros recursos(cities, itinerary,etc).
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
+import cors from 'cors'                        //Módulo para desbloquear las politicas de CORS (origenes cruzados: server del front 5173 y back 8080)
 
 let app = express();                           //Ejecutando el modulo de express: Creo una app de backend (servidor)
 
@@ -22,6 +23,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));                                 //Obligo al servidor a registrar una petición con el modulo logger/morgan
 app.use(express.json());                                //Obligo al servidor a manipular/leer json
 app.use(express.urlencoded({ extended: false }));       //Obligo al servidor a leer params/queries
+app.use(cors());                                        //Obligo al servidor a desbloquear las politicas de origenes cruzados
 app.use(express.static(path.join(__dirname, 'public')));//Obligo al servidor a acceder a los archivos estaticos de carpeta public
 
 //ROUTER

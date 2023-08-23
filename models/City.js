@@ -12,7 +12,7 @@ let schema = new Schema({
   featuredLocation: { type: String, default: "edit later" },
   admin_id: { type: Types.ObjectId, required: true, ref: "users" },
   //para relacionar datos en mongo, es necesario REFERENCIAR EL DATO HACIA LA COLECCION QUE NECESITO RELACIONARME
-});
+}, { timestamps: true });//para que agregue fecha de creacion del archivo
 //estoy parado en el modelo City de la colección cities
 //y necesito relacionar la propiedad admin_id con la coleccion users
 //esto lo logro REFERENCIANDO CON LA PROPIEDAD re:'nombreDeLaColeccionReferenciarse'
