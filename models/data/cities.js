@@ -13,7 +13,7 @@ const cities = [{
     smalldescription: "Cambodia is a small country that offers various delights, from cuisine to sights, you can't never get enough..  In the photo Angkor Wats temple complex.",
     featuredLocation: "Angkor Wats Temple Complex",
     admin_id: "igna@mh.com"
-},{
+}, {
     country: "Indonesia",
     fundation: "1945-08-17",
     population: 4230051,
@@ -23,7 +23,7 @@ const cities = [{
     smalldescription: "Famous for its volcanic mountains, iconic beaches and coral reefs, Indonesia's resort island of Bali is a must visit place. The Water Temple is featured.",
     featuredLocation: "Temple of Water",
     admin_id: "igna@mh.com"
-},{
+}, {
     country: "Tahiti",
     fundation: "1722-01-01",
     population: 10605,
@@ -33,7 +33,7 @@ const cities = [{
     smalldescription: "This south pacific island could easily be defined as the center of the romantic universe, where luxury, beach resorts, and spas dot the island with overwater bungalows, thatched-roof villas, and a fabled ambiance. Simply put, Bora Bora is one of the most beautiful islands in the world.",
     featuredLocation: "Matira Beach",
     admin_id: "igna@mh.com"
-},{
+}, {
     country: "Venezuela",
     fundation: "1764-05-22",
     population: 407452,
@@ -43,7 +43,7 @@ const cities = [{
     smalldescription: "Canaima National Park is the gateway to Angel Falls. Although other waterfalls and lagoons can be visited from Canaima camp, the main reason tourists fly here is for the trips to the base of Angel Falls, which are featured in the photo above.",
     featuredLocation: "Angel Falls",
     admin_id: "cin@mh.com"
-},{
+}, {
     country: "Japan",
     fundation: "1952-01-01",
     population: 104000000,
@@ -53,7 +53,7 @@ const cities = [{
     smalldescription: "Mount Fuji is open for climbing only in summer, the climb is a easy hike up, so you only need good shoes, water, and warm clothes (even in summer it gets very cold at the summit at sunrise).",
     featuredLocation: "Mount Fuji",
     admin_id: "cin@mh.com"
-},{
+}, {
     country: "Maldives Republic",
     fundation: "1965-07-26",
     population: 540542,
@@ -63,7 +63,7 @@ const cities = [{
     smalldescription: "The Maldives has one of the most delicate environments anywhere on the planet. Coral reefs are the foundation of the islands. While several marine species and birds are protected by law, protected areas have been designated to ensure the conservation of specific ecosystems and the rich biodiversity of the country.",
     featuredLocation: "Paradise Island Resort Maldives",
     admin_id: "cin@mh.com"
-},{
+}, {
     country: "Argentina",
     fundation: "1927-12-07",
     population: 6143,
@@ -73,7 +73,7 @@ const cities = [{
     smalldescription: "The beautiful City of El Calafate is the access to the fascinating world of Los Glaciares National Park. The calving of the Perito Moreno and the possibility to sail close to it in order to watch its walls from a close distance, or walk on it by hiring a hiking tour have lured visitors from all over the world.",
     featuredLocation: "Los Glaciares National Park",
     admin_id: "cin@mh.com"
-},{
+}, {
     country: "Australia",
     fundation: "1788-01-26",
     population: 5312000,
@@ -83,7 +83,7 @@ const cities = [{
     smalldescription: "The Sydney Opera House is one of the most distinctive and famous 20th-century buildings, and one of the most famous performing arts venues in the world. Situated on Bennelong Point in Sydney Harbour, with parkland to its south and close to the equally famous Sydney Harbour Bridge, the building and its surroundings form an iconic Australian image.",
     featuredLocation: "Opera Theater",
     admin_id: "fran@mh.com"
-},{
+}, {
     country: "Mexico",
     fundation: "1325-06-20",
     population: 212500,
@@ -93,7 +93,7 @@ const cities = [{
     smalldescription: "Modern Mexico City is built atop the sinking lake and ruins that once formed part of the Aztec Empire's principal city; Tenochtitlán.",
     featuredLocation: "Piramid Complex",
     admin_id: "fran@mh.com"
-},{
+}, {
     country: "Chile",
     fundation: "1928-01-01",
     population: 165593,
@@ -103,7 +103,7 @@ const cities = [{
     smalldescription: "Torres del Paine National Park is a large park in the Magallanes province of in Chile that encompasses glaciers, rivers, and lakes in the southern part of the Chilean Patagonia.",
     featuredLocation: "Towers of Paine",
     admin_id: "fran@mh.com"
-},{
+}, {
     country: "Africa",
     fundation: "1964-10-24",
     population: 19473125,
@@ -113,7 +113,7 @@ const cities = [{
     smalldescription: "The Victoria falls are considered one of the top ten wonders of the world and are a UNESCO World Heritage Site. They act as a barrier that divides the upper and lower sections of river Zambezi which itself remains in a 'no man's land'.",
     featuredLocation: "Victoria Falls",
     admin_id: "cin@mh.com"
-},{
+}, {
     country: "Egypt",
     fundation: "0969-01-01",
     population: 9540000,
@@ -129,15 +129,15 @@ async function createCities(arrayCities) {
     try {
         await connect(process.env.LINK_DB);
         for (let city of arrayCities) {
-            let user = await User.findOne({ mail:city.admin_id});  //busco el usuario que coincida el mail del objeto 
+            let user = await User.findOne({ mail: city.admin_id });  //busco el usuario que coincida el mail del objeto 
             let admin_id = await user._id;                              //SOLO necesito el id de ese usuario
             city.admin_id = admin_id;                             //Reasigno el valor del admin_id de cada ciudad para cambiar el mail que viene por defalt POR LO QUE CORRESPONDE
             await City.create(city)
-        }       
-        console.log('done!');                                            
+        }
+        console.log('done!');
     } catch (error) {
         console.log(error);
-}
+    }
 }
 
 createCities(cities);
