@@ -1,6 +1,6 @@
 import City from "../../models/City.js";
 
-export default async (req,res,next) => {
+export default async (req, res, next) => {
     try {
         console.log(req.query);   //QUERY ES UN OBJETO CON TODAS LAS CONSULTAS/IGUALDADES A BUSCAR EN LA BASE DE DATOS
         //let objetoDeBusqueda = { admin_id:'64d641453319242989c30fce' } //para el ejemplo ES IGUAL a req.query
@@ -10,7 +10,7 @@ export default async (req,res,next) => {
             objetoDeBusqueda.admin_id = req.query.admin_id
         }
         if (req.query.city) {
-            objetoDeBusqueda.city = new RegExp('^' +req.query.city,'i')
+            objetoDeBusqueda.city = new RegExp('^' + req.query.city, 'i')
             //new RegExp(req.query.title,'i')
         }
         if (req.query.sort) {
@@ -20,11 +20,11 @@ export default async (req,res,next) => {
             //si es -1 ordena descendentemente
         }
         let allCities = await City
-            .find(objetoDeBusqueda,'country city photo smalldescription admin_id')
-            .populate('admin_id','photo name mail -_id')
+            .find(objetoDeBusqueda, 'country city photo smalldescription admin_id')
+            .populate('admin_id', 'photo name mail -_id')
             .sort(objetoDeOrdenamiento)
         //let allCities = await City.find().select('country city photo smalldescription admin_id').populate('admin_id','photo name mail -_id')
-        if (allCities.length>0) {
+        if (allCities.length > 0) {
             return res.status(200).json({
                 success: true,
                 message: 'cities found',

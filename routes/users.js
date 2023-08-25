@@ -18,7 +18,7 @@ let router = express.Router();
 //cada vez que realizo una peticion DELETE, se eleiminara un recurso
 
 //CREATE
-router.post('/',create);
+router.post('/signup', create);
 
 //READ
 router.get('/', read);
@@ -35,4 +35,6 @@ router.put('/:u_id', update);
 
 //DESTROY
 router.delete('/:id', destroy);
+
+
 export default router;
