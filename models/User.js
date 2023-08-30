@@ -13,6 +13,8 @@ let userSchema = new Schema({
     photo: { type:String,default:"https://www.cinemascomics.com/wp-content/uploads/2020/06/poder-darth-vader.jpg" }, //default vuelve al parametro OPCIONAL, en caso que el cliente mande la foto, la usa, sino: USA LA FOTO QUE LE PUSIMOS POR DEFECTO
     password: { type:String,required:true },
     country: { type:String,required:true },
+},{
+    timestamps: true    //agrega dos propiedades de tiempo (fecha de creación y fecha de ultima modificación)
 });
 //Para crear un modelo de datos utilizo el método model
 //Pasando como parametro DONDE tengo que crear los documentos y con que FORMA
