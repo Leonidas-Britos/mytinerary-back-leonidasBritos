@@ -9,6 +9,6 @@ export default async (req, res, next) => {
       response: newItinerary._id,
     });
   } catch (error) {
-    next(error);
+    next(error);                
   }
 };

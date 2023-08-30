@@ -10,7 +10,7 @@ let schema = new Schema({
     photo: { type:String,required:true }
 },{
     timestamps: true    //agrega dos propiedades de tiempo (fecha de creación y fecha de ultima modificación)
-})
+});
 
 let Itinerary = model(collection, schema);
 export default Itinerary;

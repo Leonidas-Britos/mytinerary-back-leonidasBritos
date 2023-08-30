@@ -7,9 +7,7 @@ export default async (req,res,next)=> {
           //si existe esta consulta
           //llename el objeto de consultas para hacer el filtro
           queries.city_id = req.query.city_id
-          //al objeto de filtro
-          //le agrego la propiedad de busqueda
-          //y le asigno el valor que me envia el cliente en la quey
+          //al objeto de filtro le agrego la propiedad de busqueda y le asigno el valor que me envia el cliente en la quey
       }
       let all = await Itinerary
           .find(queries,'-__v -createdAt -updatedAt')
