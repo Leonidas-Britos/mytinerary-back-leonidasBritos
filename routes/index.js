@@ -4,6 +4,7 @@ import userRouter from './users.js'
 import citiesRouter from './cities.js'
 import activitiesRouter from './activities.js'
 import itinerariesRouter from './itineraries.js'
+import authRouter from './auth.js';
 
 let router = express.Router();
 
@@ -17,6 +18,7 @@ router.use('/users',userRouter);
 router.use('/cities',citiesRouter);
 router.use('/activities',activitiesRouter);
 router.use('/itineraries',itinerariesRouter);
+router.use('/auth',authRouter);
 //router.use acepta COMO MINIMO DOS PARAMETROS para poder enrutar correctamente.
 //1-La palabra con la que se va a enrutar.
 //2-El enrutador que tengo que conectar.
